@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "ListaP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
+<h2>Agregar productos</h2>
+<form action="/Productos/AgregarP" method="post">
+    <div class="fila">
+        <div class="campo">
+            <label>ID:</label>
+            <input type="text" name="id" required maxlength="5" placeholder="Ej: 001"
+                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Producto:</label>
+            <input type="text" name="producto" required>
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Categoría:</label>
+            <select name="categoria" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="Electronica">Electrónica</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Videojuegos">Videojuegos</option>
+                <option value="Alimentos">Alimentos</option>
+                <option value="Vestimenta">Vestimenta</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Descripción:</label>
+            <input type="text" name="descripcion">
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Precio:</label>
+            <input type="text" name="precio" required placeholder="Ej: 100.00"
+                   oninput="if(this.value.length > 8) this.value = this.value.slice(0, 8);"
+                   onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46" />
+            <br />
+        </div>
+
+        <button type="submit">Agregar</button>
+    </div>
+</form>
+
+<hr />
+
+<h2>Lista de productos</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (var p in ViewBag.Productos)
+    {
+        <tr>
+            <td>@p[0]</td>
+            <td>@p[1]</td>
+            <td>@p[2]</td>
+            <td>@p[3]</td>
+            <td>@p[4]</td>
+            <td>
+                <form action="/Productos/EliminarP" class="frm-btn" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="@p[0]" />
+                    <button type="submit" class="btn-eliminar" onclick="return confirm('¿Desea eliminar este producto?')">Eliminar</button>
+                </form>
+                <form action="/Productos/AgregarAlCarrito" class="frm-btn" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="@p[0]" />
+                    <button type="submit" class="btn-carrito">Agregar al carrito</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+
+<button type="submit" class="btn-irC" onclick="location.href = '@Url.Action("ListaCarrito", "Productos")'">Ir al carrito</button>
+

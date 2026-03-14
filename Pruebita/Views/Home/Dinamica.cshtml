@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Dinamica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
+@model List<string>
+<h2>Lista de alumnos</h2>
+<ul>
+    @foreach (var alumnos in Model)
+    {
+        <li>@alumnos</li>
+
+    }
+</ul>
+

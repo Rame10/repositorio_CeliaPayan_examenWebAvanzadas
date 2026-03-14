@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ListaCarrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal total = 0; //Variable para el total del carrito
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
+<h2>Mis productos en Carrito</h2>
+<table border="1">
+    <tr>
+        <th>Producto</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+    </tr>
+
+    @foreach (var p in ViewBag.Carrito)
+    {
+        decimal precio = Convert.ToDecimal(p[4]); //Lo convertí a decimal como usted dijo maestra.
+        total += precio; 
+
+        <tr>
+            <td>@p[1]</td>
+            <td>@p[3]</td>
+            <td>@p[4]</td>
+        </tr>
+    }
+</table>
+
+<h3>Total: @total</h3> 
+
+<br />
+
+<button type="submit" class="btn-irP" onclick="location.href = '@Url.Action("ListaP", "Productos")'">Regresar a Productos</button>
+

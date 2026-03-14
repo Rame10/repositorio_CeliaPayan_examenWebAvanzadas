@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "ListaT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet">
+
+<h2>Agregar alumnos</h2>
+<form action="/Home/Agregar" method="post"> 
+    <div class="fila">  
+        <div class="campo">
+            <label>Matricula:</label>
+            <input type="text" name="matricula" required>
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Apellido Paterno:</label>
+            <input type="text" name="paterno" required>
+            <br />
+        </div>
+        
+        <div class="campo">
+            <label>Apellido Materno:</label>
+            <input type="text" name="materno">
+            <br />
+        </div>
+
+        <div class="campo">
+            <label>Carrera:</label>
+            <input type="text" name="carrera" required>
+            <br />
+        </div>
+
+        <button type="submit">Agregar</button>
+    </div>
+</form>
+
+<hr />
+
+<h2>"Lista de Alumnos 6to Semestre"</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    <thead style="background-color:#4472C4; color:white;">
+        <tr>
+            <th>Matrícula</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Carrera</th>
+        </tr>
+    </thead>
+        @foreach (var alumno in ViewBag.Alumno)
+        {
+            <tr>
+                <td>@alumno[0]</td>
+                <td>@alumno[1]</td>
+                <td>@alumno[2]</td>
+                <td>@alumno[3]</td>
+                <td>@alumno[4]</td>
+            </tr>
+        }
+</table>
+

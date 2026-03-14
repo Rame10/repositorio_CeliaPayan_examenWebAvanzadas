@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Tabla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
+@model List<string[]>
+
+<h2>"Lista de Alumnos 6to Semestre"</h2>
+<p><strong>Carrera:</strong> @ViewBag.Carrera</p>
+<p><strong>Materia:</strong> @ViewBag.Materia</p>
+<p><strong>Docente:</strong> @ViewBag.Docente</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    <thead style="background-color:#4472C4; color:white;">
+        <tr>
+            <th>Matrícula</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var alumno in Model)
+        {
+            <tr>
+                <td>@alumno[0]</td>
+                <td>@alumno[1]</td>
+                <td>@alumno[2]</td>
+                <td>@alumno[3]</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
