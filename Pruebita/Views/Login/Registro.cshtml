@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+    Layout = null;
+}
+
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
+<h2>Registro de usuario</h2>
+
+<form method="post">
+    <div class="fila">
+        <div class="campo">
+            <label>Usuario</label>
+            <input type="text" name="UsuarioNombre" required />
+        </div>
+
+        <div class="campo">
+            <label>Correo</label>
+            <input type="email" name="Correo" required />
+        </div>
+    </div>
+
+    <div class="fila">
+        <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" name="Contraseña" required />
+        </div>
+
+        <div class="campo">
+            <label>Repetir contraseña</label>
+            <input type="password" name="RepetirContraseña" required />
+        </div>
+    </div>
+
+    <div class="campo">
+        <select name="TipoUsuario" required>
+            <option value="">-- Selecciona --</option>
+            <option value="1">Administrador</option>
+            <option value="2">Operador</option>
+            <option value="3">Invitado</option>
+        </select>
+    </div>
+
+    <button type="submit">Registrarse</button>
+    <p style="color:red">@ViewBag.Error</p>
+
+    <div class="register-link">
+        <p>¿Ya tienes una cuenta?<a href="/Login/Index">Regresar al inicio de sesión</a></p>
+    </div>
+</form>

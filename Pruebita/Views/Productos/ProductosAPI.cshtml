@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "ProductosAPI";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductosAPI</h2>
+<div id="datos"></div>
+
+<script>
+    fetch('/api/ProductosApi/Obtener').then(r => r.json()).then(data => {
+        let html = "";
+
+        data.forEach(p => {
+            html +=
+            `<p>
+                ${p.Nombre} - $${p.Precio}
+            </p>`;
+        });
+        document.getElementById("datos").innerHTML = html;
+    }) 
+    .catch(error => {
+        console.log("Hubo un error con la API:", error);
+    });
+</script>

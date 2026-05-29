@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="~/Content/login.css" rel="stylesheet" />
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Iniciar Sesión</h2>
+            <p>Ingresa los datos requeridos para continuar</p>
+        </div>
+
+        <form method="post" class="login-form">
+            <div class="form-group">
+                <label for="usuario">
+                    Usuario
+                </label>
+                <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required />
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">
+                    Contraseña
+                </label>
+                <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" required />
+            </div>
+
+            @*<div class="form-options">
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>*@
+
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+
+            <p style="color:red">@ViewBag.Error</p>
+
+            <div class="register-link">
+                <p>¿No tienes una cuenta?<a href="/Login/Registro">Regístrate aquí</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+

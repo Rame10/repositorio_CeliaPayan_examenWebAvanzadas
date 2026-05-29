@@ -17,13 +17,13 @@
 
     @foreach (var p in ViewBag.Carrito)
     {
-        decimal precio = Convert.ToDecimal(p[4]); //Lo convertí a decimal como usted dijo maestra.
-        total += precio; 
+        //decimal precio = Convert.ToDecimal(p.Precio); //Lo convertí a decimal como usted dijo maestra.
+        total += p.Precio;
 
         <tr>
-            <td>@p[1]</td>
-            <td>@p[3]</td>
-            <td>@p[4]</td>
+            <td>@p.Nombre</td>
+            <td>@p.Descripcion</td>
+            <td>@p.Precio</td>
         </tr>
     }
 </table>
